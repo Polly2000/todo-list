@@ -8,3 +8,24 @@
   font-size: 14px;
   color: #4e4e4e;
 }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.app {
+  display: flex;
+  box-shadow: 1px 2px 20px #ececec;
+  // border: 1px solid #ececec;
+  min-height: 99.5vh;
+
+  &__sidebar {
+    width: 20%;
+    background-color: #F4F6F8;
+  }
+
+  &__tasks {
+    width: 80%;
+  }
+}

@@ -1,4 +1,4 @@
-import './Main';
+import './Tasks';
 
 const Main = () => {
     return(
