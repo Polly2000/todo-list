@@ -9,6 +9,11 @@
   color: #4e4e4e;
 }
 
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -16,16 +21,20 @@
 
 .app {
   display: flex;
-  // box-shadow: 1px 2px 20px #ececec;
+  box-shadow: 1px 2px 20px #ececec;
   border: 1px solid #ececec;
   min-height: 99.5vh;
 
   &__sidebar {
     width: 20%;
     background-color: #F4F6F8;
+    padding: 40px 20px 60px 20px;
+    min-height: 99.5vh;
   }
 
   &__tasks {
-    width: 80%;
+    flex: 1;
+    // width: 80%;
+    padding: 40px;
   }
 }

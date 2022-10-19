@@ -1,4 +1,4 @@
-import './Tasks';
+import './Tasks.scss';
 
 const Main = () => {
     return(
