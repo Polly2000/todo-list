@@ -4,7 +4,8 @@ import axios from 'axios';
 
 import './App.scss';
 import List from '../List/List';
-import Main from '../Tasks/Tasks';
+import Tasks from '../Tasks/Tasks';
+import AddList from '../AddList/AddList';
 import { ReactComponent as ListSvg } from '../../assets/img/list.svg';
 
 const App = () => {
@@ -42,7 +43,7 @@ const App = () => {
         /> */}
       </div>
       <div className='app__tasks'>
-        <Main />
+        <Tasks />
       </div>
     </div>
   );
