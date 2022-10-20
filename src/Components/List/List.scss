@@ -1,72 +1,71 @@
 .list {
-    $self: &; // & - берет название класса родителя, то есть .list
-    margin-bottom: 30px;
-  
-    &__add-button {
-      opacity: 0.4;
-      transition: .2s;
-  
+  $self: &; // & - берет название класса родителя, то есть .list
+  margin-bottom: 30px;
+
+  &__add-button {
+    opacity: 0.4;
+    transition: .2s;
+
+    &:hover {
+      opacity: 1;
+    } 
+  }
+
+  &__remove-icon {
+    opacity: 0;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    margin-bottom: 5px;
+    transition: .2s;
+    cursor: pointer;
+
+    &:hover #{$self}__remove-icon {
+      opacity: 0.5;
+    }
+
+    #{$self}__remove-icon {
+      opacity: 0;
+
       &:hover {
         opacity: 1;
-      } 
-    }
-  
-    &__remove-icon {
-      opacity: 0;
-    }
-  
-    li {
-      display: flex;
-      align-items: center;
-      padding: 10px 12px;
-      margin-bottom: 5px;
-      transition: .2s;
-      cursor: pointer;
-  
-      &:hover #{$self}__remove-icon {
-        opacity: 0.5;
-      }
-  
-      #{$self}__remove-icon {
-        opacity: 0;
-  
-        &:hover {
-          opacity: 1;
-        }
-      }
-      
-  
-      span {
-        flex: 1;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        width: 160px;
-        white-space: nowrap;
-      }
-  
-      &:hover {
-        background: rgba(255, 255, 255, 0.7);
       }
     }
-  
-    i {
-      display: inline-flex;
-      margin-right: 5px;
-  
-      .badge {
-        position: relative;
-        left: 1px;
-      }
-  
-      // впечатление, что это не нужно, но пусть пока будет, удалю потом
-      img {
-        opacity: 0.6;
-      }
+    
+
+    span {
+      flex: 1;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      width: 160px;
+      white-space: nowrap;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.7);
     }
   }
-  
-  .active {
-    background: #FFFFFF;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.04);
-    border-radius: 4px;
+
+  i {
+    display: inline-flex;
+    margin-right: 5px;
+
+    .badge {
+      position: relative;
+      left: 1px;
+    }
+
+    img {
+      opacity: 0.6;
+    }
   }
+}
+
+.active {
+  background: #FFFFFF;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+}

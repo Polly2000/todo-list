@@ -15,26 +15,77 @@ body {
 }
 
 .container {
-  max-width: 1200px;
   margin: 0 auto;
+  width: 1200px;
 }
 
-.app {
+.todo {
   display: flex;
-  box-shadow: 1px 2px 20px #ececec;
-  border: 1px solid #ececec;
+  // box-shadow: 1px 2px 20px #ececec;
+  border-radius: 10px;
+  border: 1px solid #f1f1f1;
   min-height: 99.5vh;
 
   &__sidebar {
-    width: 20%;
     background-color: #F4F6F8;
+    width: 20%;
     padding: 40px 20px 60px 20px;
     min-height: 99.5vh;
   }
 
   &__tasks {
     flex: 1;
-    // width: 80%;
     padding: 40px;
+  }
+}
+
+.field {
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 100%;
+  // font-size: 14px;
+
+  &:focus {
+    border-color: #ebebeb;
+  }
+
+}
+
+.button {
+  background-color: #4dd599;
+  border-radius: 4px;
+  color: #fff;
+  border: 0;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover {
+    background-color: darken(#4dd599, 5%);
+  }
+
+  &:active {
+    background-color: darken(#4dd599, 10%);
+  }
+
+  &:disabled {
+    background-color: #d8d8d8;
+  }
+
+  &_grey {
+    background-color: #F4F6F8;
+    color: #9C9C9C;
+
+    &:hover {
+      background-color: darken(#F4F6F8, 3%);
+    }
+
+    &:active {
+      background-color: darken(#F4F6F8, 6%);
+    }
   }
 }
