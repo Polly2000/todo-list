@@ -10,9 +10,9 @@ interface ITasks {
     list: any,
     onEditTitle: any,
     onAddTask: any,
-    withoutEmpty?: any,
     onRemoveTask?: any,
-    onEditTask?: any
+    onEditTask?: any,
+    withoutEmpty?: any,
 }
 
 const Tasks: FC<ITasks> = 
@@ -20,9 +20,9 @@ const Tasks: FC<ITasks> =
   list,
   onEditTitle, 
   onAddTask, 
-  withoutEmpty,
   onRemoveTask,
-  onEditTask
+  onEditTask,
+  withoutEmpty
 }) => {
 
   const editTitle = () => {
@@ -59,8 +59,6 @@ const Tasks: FC<ITasks> =
               list={list}
               onRemove={onRemoveTask}
               onEdit={onEditTask}
-              // onEdit={onEdit}
-              // onComplete={onComplete}
               {...task}
             />
           ))

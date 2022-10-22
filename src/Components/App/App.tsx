@@ -55,11 +55,6 @@ const App = () => {
     setLists(newList);
   };
 
-  const onAddList = (obj: any) => {
-    const newList = [...lists, obj];
-    setLists(newList);
-  };
-
   const onAddTask = (listId: any, taskObj: any) => {
     const newList = lists.map((item:any) => {
       if (item.id === listId) {
@@ -113,6 +108,11 @@ const App = () => {
       });
   };
 
+  const onAddList = (obj: any) => {
+    const newList = [...lists, obj];
+    setLists(newList);
+  };
+
   return (
       <div className='todo container'>
       <div className='todo__sidebar'>
@@ -149,7 +149,7 @@ const App = () => {
           
         <AddList 
           onAdd={onAddList} 
-          colors={colors}
+          colors={colors} 
         />
       </div>
 
