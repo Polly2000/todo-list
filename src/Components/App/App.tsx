@@ -10,12 +10,11 @@ import { ReactComponent as ListSvg } from '../../assets/img/list.svg';
 
 const App = () => {
 
-  const [lists, setLists] = useState<any | null>(null); // так нужно из-за тайпскрипта
+  const [lists, setLists] = useState<any | null>(null); 
   const [colors, setColors] = useState<any | null>(null);
   const [activeItem, setActiveItem] = useState<any | null>(null);
 
   const location = useLocation();
-  // console.log(location);
 
   const navigate = useNavigate()
   const goHome = () => navigate('/');
@@ -65,7 +64,7 @@ const App = () => {
     setLists(newList);
   };
 
-  const onRemoveTask = (listId: any, taskId: any) => {
+  const onRemoveTask = (listId: number, taskId: number) => {
     if (window.confirm('Вы действительно хотите удалить задачу?')) {
       const newList = lists.map((item:any) => {
         if (item.id === listId) {
@@ -81,11 +80,11 @@ const App = () => {
       });
     }
   };
-
+  
   const onEditTask = (listId: any, taskObj: any) => {
     const newTaskText = window.prompt('Введите текст задачи..', taskObj.text);
 
-    if (!newTaskText) { // если пусто, то обрыв всей функции, чтобы не шла функция при пустом значении
+    if (!newTaskText) { 
       return;
     }
 
@@ -117,7 +116,6 @@ const App = () => {
       <div className='todo container'>
       <div className='todo__sidebar'>
         <List 
-          // onClick={goHome}
           onClickItem={() => {
             goHome();
           }}
@@ -134,7 +132,7 @@ const App = () => {
           <List 
             items={lists}
             onRemove={(id:any) => {
-              const newList = lists.filter((item:any) => item.id !== id); // вот здесь уже удаляем элемент из стейта, то есть говорим, что в новом массиве будут все элементы, кроме того элемента, чей айди равен такому айди, который передается в функцию онРемове
+              const newList = lists.filter((item:any) => item.id !== id); 
               setLists(newList);
             }}
             onClickItem={(list:any) => {

@@ -20,16 +20,19 @@ const Task: FC<ITask> =
   onRemove,
   onEdit,
   onComplete
-}) => {
+}) => {;
+
   return (
+
     <div key={id} className="tasks__items-row">
       <div className="checkbox">
         <input 
           id={`task-${id}`} // делает клик на нужный инпут
           type='checkbox'
         />
-        {/* // делает клик на нужный инпут */}
-        <label htmlFor={`task-${id}`}> 
+        <label 
+          htmlFor={`task-${id}`}
+        > 
           <svg 
             width="11" 
             height="8" 

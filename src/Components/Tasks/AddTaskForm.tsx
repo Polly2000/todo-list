@@ -27,7 +27,7 @@ const AddTaskForm: FC<IAddTaskForm> =
 
   const addTask = () => {
     if (!inputValue) { 
-      alert('Пожалуйста, введите название таска')// если значение инпута пустое, то заканчиваем функцию
+      alert('Пожалуйста, введите название таска')
       return;
     }
     const obj = {

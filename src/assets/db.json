@@ -23,12 +23,6 @@
   ],
   "tasks": [
     {
-      "id": 1,
-      "listId": 2,
-      "text": "Изучить JavaScript",
-      "completed": false
-    },
-    {
       "id": 2,
       "listId": 2,
       "text": "Изучить 'Грокаем алгоритмы'",

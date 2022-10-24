@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC} from 'react';
 import axios from 'axios';
 
 import './Tasks.scss';
