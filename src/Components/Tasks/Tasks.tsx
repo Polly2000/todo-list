@@ -13,6 +13,7 @@ interface ITasks {
     onRemoveTask?: any,
     onEditTask?: any,
     withoutEmpty?: any,
+    onCompleteTask?: any,
 }
 
 const Tasks: FC<ITasks> = 
@@ -22,7 +23,8 @@ const Tasks: FC<ITasks> =
   onAddTask, 
   onRemoveTask,
   onEditTask,
-  withoutEmpty
+  withoutEmpty,
+  onCompleteTask
 }) => {
 
   const editTitle = () => {
@@ -60,10 +62,11 @@ const Tasks: FC<ITasks> =
               onRemove={onRemoveTask}
               onEdit={onEditTask}
               {...task}
+              onComplete={onCompleteTask}
             />
           ))
         }
-        <AddTaskForm 
+        <AddTaskForm
           key={list.id}
           list={list}
           onAddTask={onAddTask}

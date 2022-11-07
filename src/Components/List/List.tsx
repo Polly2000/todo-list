@@ -48,10 +48,10 @@ const List: FC<IList> =
                   <i>
                     { item.icon ? item.icon : (
                       <Badge color={item.color.name} />
-                      
                     )}
                   </i>
-                  <span> {item.name} {item.tasks && ` (${item.tasks.length})`} </span>
+                  {/* <span> {item.name} {item.tasks && `(${item.tasks.length})`} </span> */} 
+                  <span> {item.name} </span>
                   {isRemovable && (
                     <img 
                       className='list__remove-icon' 

@@ -8,7 +8,7 @@ interface ITask {
   list?: any,
   onRemove?: any,
   onEdit?: any,
-  onComplete?: any
+  onComplete?: any,
 }
 
 const Task: FC<ITask> = 
@@ -19,8 +19,12 @@ const Task: FC<ITask> =
   list,
   onRemove,
   onEdit,
-  onComplete
-}) => {;
+  onComplete,
+}) => {
+
+  const onChangeCheckbox = (e:any) => {
+    onComplete(list.id, id, e.target.checked);
+  }
 
   return (
 
@@ -29,6 +33,8 @@ const Task: FC<ITask> =
         <input 
           id={`task-${id}`} // делает клик на нужный инпут
           type='checkbox'
+          onChange={onChangeCheckbox}
+          checked={completed}
         />
         <label 
           htmlFor={`task-${id}`}

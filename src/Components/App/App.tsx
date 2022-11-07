@@ -80,6 +80,26 @@ const App = () => {
       });
     }
   };
+
+  const onCompleteTask = (listId: any, taskId: any, completed: any) => {
+    const newList = lists.map((list:any) => {
+      if (list.id === listId) {
+        list.tasks = list.tasks.map((task:any) => {
+          if (task.id === taskId) {
+            task.completed = completed;
+          }
+          return task;
+        })
+      }
+      return list;
+  });
+  setLists(newList);
+  axios
+    .patch('http://localhost:3001/tasks/' + taskId, { completed })
+    .catch(() => {
+      alert('Не удалось обновить задачу :с')
+    });
+  }
   
   const onEditTask = (listId: any, taskObj: any) => {
     const newTaskText = window.prompt('Введите текст задачи..', taskObj.text);
@@ -163,6 +183,8 @@ const App = () => {
                 onEditTitle={onEditListTitle}
                 onAddTask={onAddTask}
                 onRemoveTask={onRemoveTask}
+                onEditTask={onEditTask}
+                onCompleteTask={onCompleteTask}
                 withoutEmpty
               />
             ))
@@ -178,6 +200,7 @@ const App = () => {
               onAddTask={onAddTask}
               onRemoveTask={onRemoveTask}
               onEditTask={onEditTask}
+              onCompleteTask={onCompleteTask}
             />
           )}
         />

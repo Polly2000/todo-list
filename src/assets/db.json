@@ -19,6 +19,11 @@
       "id": 4,
       "name": "Книги",
       "colorId": 2
+    },
+    {
+      "name": "название списка",
+      "colorId": 7,
+      "id": 5
     }
   ],
   "tasks": [
@@ -32,7 +37,7 @@
       "id": 3,
       "listId": 2,
       "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-      "completed": true
+      "completed": false
     },
     {
       "id": 4,
@@ -45,6 +50,24 @@
       "listId": 2,
       "text": "Изучить ReactJS",
       "completed": false
+    },
+    {
+      "listId": 3,
+      "text": "Привет новой задаче",
+      "completed": false,
+      "id": 6
+    },
+    {
+      "listId": 1,
+      "text": "купи слона",
+      "completed": false,
+      "id": 7
+    },
+    {
+      "listId": 5,
+      "text": "шндглонрпаввап",
+      "completed": false,
+      "id": 8
     }
   ],
   "colors": [
