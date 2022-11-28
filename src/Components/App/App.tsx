@@ -123,7 +123,7 @@ const App = () => {
     axios
       .patch('http://localhost:3001/tasks/' + taskObj.id, { text: taskObj.text })
       .catch(() => {
-        alert('Не удалось удалить задачу :с')
+        alert('Не удалось изменить название задачи :с')
       });
   };
 
