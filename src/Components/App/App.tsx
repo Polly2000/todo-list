@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import axios from 'axios';
 
 import './App.scss';
 import List from '../List/List';
 import Tasks from '../Tasks/Tasks';
 import AddList from '../AddList/AddList';
+import { darkTheme } from '../../Theme';
 import { ReactComponent as ListSvg } from '../../assets/img/list.svg';
 
 const App = () => {
@@ -133,82 +136,85 @@ const App = () => {
   };
 
   return (
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
       <div className='todo container'>
-      <div className='todo__sidebar'>
-        <List 
-          onClickItem={() => {
-            goHome();
-          }}
-          items={[
-            {
-              active: !activeItem,
-              icon: <ListSvg />,
-              name: 'Все задачи',
-            },
-          ]}
-          isRemovable={false}
-        />
-        {lists ? (
+        <div className='todo__sidebar'>
           <List 
-            items={lists}
-            onRemove={(id:any) => {
-              const newList = lists.filter((item:any) => item.id !== id); 
-              setLists(newList);
+            onClickItem={() => {
+              goHome();
             }}
-            onClickItem={(list:any) => {
-              goList(list.id);
-            }}
-            activeItem={activeItem}
-            isRemovable
+            items={[
+              {
+                active: !activeItem,
+                icon: <ListSvg />,
+                name: 'Все задачи',
+              },
+            ]}
+            isRemovable={false}
           />
-        ) : (
-          'Загрузка...'
-        )}
-          
-        <AddList 
-          onAdd={onAddList} 
-          colors={colors} 
-        />
-      </div>
+          {lists ? (
+            <List 
+              items={lists}
+              onRemove={(id:any) => {
+                const newList = lists.filter((item:any) => item.id !== id); 
+                setLists(newList);
+              }}
+              onClickItem={(list:any) => {
+                goList(list.id);
+              }}
+              activeItem={activeItem}
+              isRemovable
+            />
+          ) : (
+            'Загрузка...'
+          )}
+            
+          <AddList 
+            onAdd={onAddList} 
+            colors={colors} 
+          />
+        </div>
 
-      <div className='todo__tasks'>
-      <Routes>
-        <Route 
-          path='/'
-          element={
-            lists && lists.map((list: any) => (
+        <div className='todo__tasks'>
+        <Routes>
+          <Route 
+            path='/'
+            element={
+              lists && lists.map((list: any) => (
+                <Tasks 
+                  key={list}
+                  list={list} 
+                  onEditTitle={onEditListTitle}
+                  onAddTask={onAddTask}
+                  onRemoveTask={onRemoveTask}
+                  onEditTask={onEditTask}
+                  onCompleteTask={onCompleteTask}
+                  withoutEmpty
+                />
+              ))
+            }
+          
+          />
+          <Route 
+            path='/lists/:id' 
+            element={lists && activeItem && (
               <Tasks 
-                key={list}
-                list={list} 
+                list={activeItem} 
                 onEditTitle={onEditListTitle}
                 onAddTask={onAddTask}
                 onRemoveTask={onRemoveTask}
                 onEditTask={onEditTask}
                 onCompleteTask={onCompleteTask}
-                withoutEmpty
               />
-            ))
-          }
-        
-        />
-        <Route 
-          path='/lists/:id' 
-          element={lists && activeItem && (
-            <Tasks 
-              list={activeItem} 
-              onEditTitle={onEditListTitle}
-              onAddTask={onAddTask}
-              onRemoveTask={onRemoveTask}
-              onEditTask={onEditTask}
-              onCompleteTask={onCompleteTask}
-            />
-          )}
-        />
+            )}
+          />
+            
+        </Routes>
           
-      </Routes>
-        
+        </div>
       </div>
-    </div>
+    </ThemeProvider>
     
   );
 }
