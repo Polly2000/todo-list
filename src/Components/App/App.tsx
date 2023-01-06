@@ -1,17 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 import axios from 'axios';
+// import CssBaseline from '@mui/material/CssBaseline';
+import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 import './App.scss';
 import List from '../List/List';
 import Tasks from '../Tasks/Tasks';
 import AddList from '../AddList/AddList';
-import { darkTheme } from '../../Theme';
+// import { darkTheme, lightTheme } from '../../Theme';
 import { ReactComponent as ListSvg } from '../../assets/img/list.svg';
 
+const ColorModeContext = createContext({ toggleColorMode: () => {} });
+
 const App = () => {
+
+  const theme = useTheme();
+  const colorMode = useContext(ColorModeContext);
 
   const [lists, setLists] = useState<any | null>(null); 
   const [colors, setColors] = useState<any | null>(null);
@@ -136,87 +145,143 @@ const App = () => {
   };
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <div className='todo container'>
-        <div className='todo__sidebar'>
-          <List 
-            onClickItem={() => {
-              goHome();
-            }}
-            items={[
-              {
-                active: !activeItem,
-                icon: <ListSvg />,
-                name: 'Все задачи',
-              },
-            ]}
-            isRemovable={false}
-          />
-          {lists ? (
-            <List 
-              items={lists}
-              onRemove={(id:any) => {
-                const newList = lists.filter((item:any) => item.id !== id); 
-                setLists(newList);
-              }}
-              onClickItem={(list:any) => {
-                goList(list.id);
-              }}
-              activeItem={activeItem}
-              isRemovable
-            />
-          ) : (
-            'Загрузка...'
-          )}
-            
-          <AddList 
-            onAdd={onAddList} 
-            colors={colors} 
-          />
-        </div>
-
-        <div className='todo__tasks'>
-        <Routes>
-          <Route 
-            path='/'
-            element={
-              lists && lists.map((list: any) => (
-                <Tasks 
-                  key={list}
-                  list={list} 
-                  onEditTitle={onEditListTitle}
-                  onAddTask={onAddTask}
-                  onRemoveTask={onRemoveTask}
-                  onEditTask={onEditTask}
-                  onCompleteTask={onCompleteTask}
-                  withoutEmpty
-                />
-              ))
-            }
-          
-          />
-          <Route 
-            path='/lists/:id' 
-            element={lists && activeItem && (
-              <Tasks 
-                list={activeItem} 
-                onEditTitle={onEditListTitle}
-                onAddTask={onAddTask}
-                onRemoveTask={onRemoveTask}
-                onEditTask={onEditTask}
-                onCompleteTask={onCompleteTask}
+    // <ThemeProvider theme={lightTheme}>
+      // <CssBaseline />
+      <div>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            // width: '1200px',
+            // margin: '0 auto',
+            alignItems: 'center',
+            justifyContent: 'center',
+            bgcolor: 'background.default',
+            color: 'text.primary',
+            borderRadius: 1,
+          }}
+        >
+          {/* {theme.palette.mode} mode */}
+          <div className="container">
+            <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+            </IconButton>
+          </div>
+          <div className={theme.palette.mode === 'dark' ? 'todoDark container' : 'todo container'}>
+            <div className={theme.palette.mode === 'dark' ? 'todoDark__sidebar' : 'todo__sidebar'}>
+              <List 
+                onClickItem={() => {
+                  goHome();
+                }}
+                items={[
+                  {
+                    active: !activeItem,
+                    icon: <ListSvg />,
+                    name: 'Все задачи',
+                  },
+                ]}
+                isRemovable={false}
+                mode={theme.palette.mode}
               />
-            )}
-          />
-            
-        </Routes>
-          
-        </div>
+              {lists ? (
+                <List 
+                  items={lists}
+                  onRemove={(id:any) => {
+                    const newList = lists.filter((item:any) => item.id !== id); 
+                    setLists(newList);
+                  }}
+                  onClickItem={(list:any) => {
+                    goList(list.id);
+                  }}
+                  activeItem={activeItem}
+                  isRemovable
+                  mode={theme.palette.mode}
+                />
+              ) : (
+                'Загрузка...'
+              )}
+                
+              <AddList 
+                onAdd={onAddList} 
+                colors={colors}
+                mode={theme.palette.mode}
+              />
+            </div>
+            <div className='todo__tasks'>
+            <Routes>
+              <Route 
+                path='/'
+                element={
+                  lists && lists.map((list: any) => (
+                    <Tasks 
+                      key={list}
+                      list={list} 
+                      onEditTitle={onEditListTitle}
+                      onAddTask={onAddTask}
+                      onRemoveTask={onRemoveTask}
+                      onEditTask={onEditTask}
+                      onCompleteTask={onCompleteTask}
+                      withoutEmpty
+                      mode={theme.palette.mode}
+                    />
+                  ))
+                }
+              
+              />
+              <Route 
+                path='/lists/:id' 
+                element={lists && activeItem && (
+                  <Tasks 
+                    list={activeItem} 
+                    onEditTitle={onEditListTitle}
+                    onAddTask={onAddTask}
+                    onRemoveTask={onRemoveTask}
+                    onEditTask={onEditTask}
+                    onCompleteTask={onCompleteTask}
+                    mode={theme.palette.mode}
+                  />
+                )}
+              />
+                
+            </Routes>
+              
+            </div>
+          </div>
+        </Box>
       </div>
-    </ThemeProvider>
+    // </ThemeProvider>
     
   );
 }
 
-export default App;
+// export default App;
+
+export default function ToggleColorMode() {
+  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+      },
+    }),
+    [],
+  );
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode],
+  );
+
+  return (
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </ColorModeContext.Provider>
+  );
+}

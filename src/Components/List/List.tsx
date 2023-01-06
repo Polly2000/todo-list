@@ -12,7 +12,8 @@ interface IList {
     onClick?: any,
     onRemove?: any,
     onClickItem?: any,
-    activeItem?: any
+    activeItem?: any,
+    mode?: any,
 }
 
 const List: FC<IList> = 
@@ -22,7 +23,8 @@ const List: FC<IList> =
     onClick,
     onRemove,
     onClickItem,
-    activeItem
+    activeItem,
+    mode,
 }) => {
 
     const removeList = (item: any) => {
@@ -41,7 +43,7 @@ const List: FC<IList> =
             {items.map( (item:any, index:any) => 
                 <li 
                   key={index} 
-                  className={classNames(item.className, { 
+                  className={mode === 'dark' ? 'activeDark' : classNames(item.className, { 
                     active: item.active ? item.active : activeItem && activeItem.id === item.id})}
                   onClick={onClickItem ? () => onClickItem(item) : onClickItem}
                 >

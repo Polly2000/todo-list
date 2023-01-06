@@ -31,7 +31,7 @@
       "id": 2,
       "listId": 2,
       "text": "Изучить 'Грокаем алгоритмы'",
-      "completed": false
+      "completed": true
     },
     {
       "id": 3,
@@ -49,7 +49,7 @@
       "id": 5,
       "listId": 2,
       "text": "Изучить ReactJS",
-      "completed": false
+      "completed": true
     },
     {
       "listId": 3,

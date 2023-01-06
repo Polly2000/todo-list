@@ -14,6 +14,7 @@ interface ITasks {
     onEditTask?: any,
     withoutEmpty?: any,
     onCompleteTask?: any,
+    mode?: any,
 }
 
 const Tasks: FC<ITasks> = 
@@ -24,7 +25,8 @@ const Tasks: FC<ITasks> =
   onRemoveTask,
   onEditTask,
   withoutEmpty,
-  onCompleteTask
+  onCompleteTask,
+  mode
 }) => {
 
   const editTitle = () => {
@@ -43,7 +45,7 @@ const Tasks: FC<ITasks> =
 
   return (
     <div className='tasks'>
-      <h2 style={{color: list.color.hex}} className='tasks__title'>
+      <h2 style={{color: list.color.hex}} className={mode === 'dark' ? 'tasksDark__title' : 'tasks__title'}>
         { list.name }
         <img 
           onClick={editTitle} 
@@ -70,6 +72,7 @@ const Tasks: FC<ITasks> =
           key={list.id}
           list={list}
           onAddTask={onAddTask}
+          mode={mode}
         />
       </div>
 

@@ -52,3 +52,46 @@
   
     }
   }
+
+  .add-listDark__popup {
+    position: relative;
+      top: -20px;
+      left: 10px;
+      width: 240px;
+      height: 150px;
+      // background-color: #fff;
+      background-color: #2a303a;
+      box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+      padding: 18px;
+  
+      &-colors {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+  
+        .badge {
+          width: 16px;
+          height: 16px;
+          position: static;
+          cursor: pointer;
+          border: 1px solid transparent;
+  
+          &_active {
+            border: 1px solid #525252;
+          }
+        } 
+      }
+  
+      &-close-btn {
+        position: absolute;
+        right: -5px;
+        top: -5px;
+        cursor: pointer;
+      }
+  
+      .button {
+        width: 84%;
+        margin-top: 15px;
+      }
+  }

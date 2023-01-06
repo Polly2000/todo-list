@@ -21,13 +21,33 @@ body {
 
 .todo {
   display: flex;
-  // box-shadow: 1px 2px 20px #ececec;
   border-radius: 10px;
-  border: 1px solid #f1f1f1;
+  border: 2px solid #f1f1f1;
   min-height: 99.5vh;
 
   &__sidebar {
     background-color: #F4F6F8;
+    border-radius: 10px 0 0 10px;
+    width: 20%;
+    padding: 40px 20px 60px 20px;
+    min-height: 99.5vh;
+  }
+
+  &__tasks {
+    flex: 1;
+    padding: 40px;
+  }
+}
+
+.todoDark {
+  display: flex;
+  border-radius: 10px;
+  border: 2px solid #15181d;
+  min-height: 99.5vh;
+
+  &__sidebar {
+    background-color: #15181d;
+    border-radius: 10px 0 0 0;
     width: 20%;
     padding: 40px 20px 60px 20px;
     min-height: 99.5vh;
@@ -41,6 +61,20 @@ body {
 
 .field {
   background-color: #fff;
+  border: 1px solid #dbdbdb;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 100%;
+
+  &:focus {
+    border-color: #ebebeb;
+  }
+
+}
+
+.fieldDark {
+  background-color: #dfdfdf;
   border: 1px solid #dbdbdb;
   box-sizing: border-box;
   border-radius: 4px;
@@ -87,4 +121,17 @@ body {
       background-color: darken(#F4F6F8, 6%);
     }
   }
+}
+
+.buttonDark_grey {
+    background-color: #dfdfdf;
+    color: #9C9C9C;
+
+    &:hover {
+      background-color: darken(#dfdfdf, 3%);
+    }
+
+    &:active {
+      background-color: darken(#dfdfdf, 6%);
+    }
 }

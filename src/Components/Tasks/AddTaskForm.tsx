@@ -6,13 +6,15 @@ import addSvg from '../../assets/img/add.svg';
 
 interface IAddTaskForm {
   list: any,
-  onAddTask?: any
+  onAddTask?: any,
+  mode: any,
 }
 
 const AddTaskForm: FC<IAddTaskForm> = 
 ({ 
   list,
-  onAddTask
+  onAddTask,
+  mode
  }) => {
 
   const [visibleForm, setVisibleForm] = useState(false);
@@ -59,9 +61,9 @@ const AddTaskForm: FC<IAddTaskForm> =
           <span> Новая задача </span>
         </div>
         ):(
-        <div className="tasks__form-block">
+        <div className={mode === 'dark' ? 'tasksDark__form-block' : "tasks__form-block"}>
           <input
-            className='field'
+            className={mode === 'dark' ? 'fieldDark' : 'field'}
             type='text'
             placeholder='Введите текст задачи..'
             onChange={event => setInputValue(event.target.value)}
@@ -74,7 +76,7 @@ const AddTaskForm: FC<IAddTaskForm> =
             {isLoading ? 'Добавление...' : 'Добавить задачу'}
           </button>
           <button 
-            className='button button_grey'
+            className={mode === 'dark' ? 'button buttonDark_grey' : 'button button_grey'}
             onClick={toggleFormVisible}
           >
             Отмена

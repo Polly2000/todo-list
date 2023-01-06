@@ -9,11 +9,12 @@ import closeSvg from '../../assets/img/close.svg';
 
 interface IAddList {
     onAdd: any,
-    colors: any
+    colors: any,
+    mode: any,
 }
 
 const AddList: FC<IAddList> = ({
-    colors, onAdd
+    colors, onAdd, mode
   }) => {
   
     const [visiblePopup, setVisiblePopup] = useState(false);
@@ -35,7 +36,7 @@ const AddList: FC<IAddList> = ({
   
     const addList = () => {
       if (!inputValue) {
-        alert('Пожалуйста, введите название списка')
+        alert('Пожалуйста, введите название папки')
         return; // обрывает функцию, тк пользователь ничего не ввел
       }
       setIsLoading(true); // говорим, что идет загрузка
@@ -71,7 +72,7 @@ const AddList: FC<IAddList> = ({
         />
         {/* если визиблПопап тру - то появится окошко */}
         { visiblePopup && (
-          <div className='add-list__popup'>
+          <div className={mode === 'dark' ? 'add-listDark__popup' : 'add-list__popup'}>
             <img
               onClick={onClose}
               src={closeSvg} 
@@ -81,9 +82,9 @@ const AddList: FC<IAddList> = ({
           <input
             value={inputValue}
             onChange={(e:any) => setInputValue(e.target.value)}
-            className='field'
+            className={mode === 'dark' ? 'fieldDark' : 'field'}
             type='text'
-            placeholder='Название списка'
+            placeholder='Название папки'
           />
           <div className='add-list__popup-colors'>
             {
