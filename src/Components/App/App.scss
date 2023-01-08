@@ -19,6 +19,16 @@ body {
   width: 1200px;
 }
 
+.link {
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .todo {
   display: flex;
   border-radius: 10px;

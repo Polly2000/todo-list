@@ -1,0 +1,52 @@
+// .notAuth_block {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   // height: 99vh;
+//   background-color: gray;
+//   margin-top: 20%;
+//   width: 20%;
+//   padding: 5% 0 5% 0;
+// }
+
+// body {
+//   background-color: lime;
+// }
+
+.notAuth_block {
+  text-align: center;
+}
+
+.title {
+  margin-top: 10%;
+  font-family: Montserrat;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 45px;
+  color: #4e4e4e;
+}
+
+.text {
+  font-family: Montserrat;
+  margin-bottom: 5%;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+  // flex-direction: row;
+  // align-items:inherit;
+  // margin: 2%;
+}
+
+.oneButton {
+  margin: 10px;
+}
+
+.icons {
+  // display: flex;
+  // width: 80%;
+  // margin: 0 auto;
+  // justify-content: space-evenly;
+}

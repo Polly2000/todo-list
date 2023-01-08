@@ -1,7 +1,6 @@
 import React, { useState, useEffect, createContext, useContext } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
-// import CssBaseline from '@mui/material/CssBaseline';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
@@ -12,7 +11,7 @@ import './App.scss';
 import List from '../List/List';
 import Tasks from '../Tasks/Tasks';
 import AddList from '../AddList/AddList';
-// import { darkTheme, lightTheme } from '../../Theme';
+import NotAuth from '../../pages/NotAuth/NotAuth';
 import { ReactComponent as ListSvg } from '../../assets/img/list.svg';
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
@@ -144,113 +143,118 @@ const App = () => {
     setLists(newList);
   };
 
+  const isAuth = false;
+
   return (
-    // <ThemeProvider theme={lightTheme}>
-      // <CssBaseline />
       <div>
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            // width: '1200px',
-            // margin: '0 auto',
-            alignItems: 'center',
-            justifyContent: 'center',
-            bgcolor: 'background.default',
-            color: 'text.primary',
-            borderRadius: 1,
-          }}
-        >
-          {/* {theme.palette.mode} mode */}
-          <div className="container">
-            <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-              {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-            </IconButton>
-          </div>
-          <div className={theme.palette.mode === 'dark' ? 'todoDark container' : 'todo container'}>
-            <div className={theme.palette.mode === 'dark' ? 'todoDark__sidebar' : 'todo__sidebar'}>
-              <List 
-                onClickItem={() => {
-                  goHome();
-                }}
-                items={[
-                  {
-                    active: !activeItem,
-                    icon: <ListSvg />,
-                    name: 'Все задачи',
-                  },
-                ]}
-                isRemovable={false}
-                mode={theme.palette.mode}
-              />
-              {lists ? (
+        { isAuth ?
+        (
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              bgcolor: 'background.default',
+              color: 'text.primary',
+              borderRadius: 1,
+            }}
+          >
+            <div className="container">
+              <div className="header">
+                <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+                  {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                </IconButton>
+                <p>login</p>
+              </div>
+            </div>
+
+            <div className={theme.palette.mode === 'dark' ? 'todoDark container' : 'todo container'}>
+              <div className={theme.palette.mode === 'dark' ? 'todoDark__sidebar' : 'todo__sidebar'}>
                 <List 
-                  items={lists}
-                  onRemove={(id:any) => {
-                    const newList = lists.filter((item:any) => item.id !== id); 
-                    setLists(newList);
+                  onClickItem={() => {
+                    goHome();
                   }}
-                  onClickItem={(list:any) => {
-                    goList(list.id);
-                  }}
-                  activeItem={activeItem}
-                  isRemovable
+                  items={[
+                    {
+                      active: !activeItem,
+                      icon: <ListSvg />,
+                      name: 'Все задачи',
+                    },
+                  ]}
+                  isRemovable={false}
                   mode={theme.palette.mode}
                 />
-              ) : (
-                'Загрузка...'
-              )}
+                {lists ? (
+                  <List 
+                    items={lists}
+                    onRemove={(id:any) => {
+                      const newList = lists.filter((item:any) => item.id !== id); 
+                      setLists(newList);
+                    }}
+                    onClickItem={(list:any) => {
+                      goList(list.id);
+                    }}
+                    activeItem={activeItem}
+                    isRemovable
+                    mode={theme.palette.mode}
+                  />
+                ) : (
+                  'Загрузка...'
+                )}
+                  
+                <AddList 
+                  onAdd={onAddList} 
+                  colors={colors}
+                  mode={theme.palette.mode}
+                />
+              </div>
+              <div className='todo__tasks'>
+              <Routes>
+                <Route 
+                  path='/'
+                  element={
+                    lists && lists.map((list: any) => (
+                      <Tasks 
+                        key={list}
+                        list={list} 
+                        onEditTitle={onEditListTitle}
+                        onAddTask={onAddTask}
+                        onRemoveTask={onRemoveTask}
+                        onEditTask={onEditTask}
+                        onCompleteTask={onCompleteTask}
+                        withoutEmpty
+                        mode={theme.palette.mode}
+                      />
+                    ))
+                  }
                 
-              <AddList 
-                onAdd={onAddList} 
-                colors={colors}
-                mode={theme.palette.mode}
-              />
-            </div>
-            <div className='todo__tasks'>
-            <Routes>
-              <Route 
-                path='/'
-                element={
-                  lists && lists.map((list: any) => (
+                />
+                <Route 
+                  path='/lists/:id' 
+                  element={lists && activeItem && (
                     <Tasks 
-                      key={list}
-                      list={list} 
+                      list={activeItem} 
                       onEditTitle={onEditListTitle}
                       onAddTask={onAddTask}
                       onRemoveTask={onRemoveTask}
                       onEditTask={onEditTask}
                       onCompleteTask={onCompleteTask}
-                      withoutEmpty
                       mode={theme.palette.mode}
                     />
-                  ))
-                }
-              
-              />
-              <Route 
-                path='/lists/:id' 
-                element={lists && activeItem && (
-                  <Tasks 
-                    list={activeItem} 
-                    onEditTitle={onEditListTitle}
-                    onAddTask={onAddTask}
-                    onRemoveTask={onRemoveTask}
-                    onEditTask={onEditTask}
-                    onCompleteTask={onCompleteTask}
-                    mode={theme.palette.mode}
-                  />
-                )}
-              />
-                
-            </Routes>
-              
+                  )}
+                />   
+              </Routes>
+              </div>
             </div>
-          </div>
-        </Box>
-      </div>
-    // </ThemeProvider>
-    
+          </Box> 
+        )
+          :
+        (
+          <NotAuth />
+        )
+      }
+      </div>    
   );
 }
 
