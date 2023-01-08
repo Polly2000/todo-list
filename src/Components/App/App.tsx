@@ -12,6 +12,8 @@ import List from '../List/List';
 import Tasks from '../Tasks/Tasks';
 import AddList from '../AddList/AddList';
 import NotAuth from '../../pages/NotAuth/NotAuth';
+import Login from '../../pages/Login/Login';
+import Registration from '../../pages/Registration/Registration';
 import { ReactComponent as ListSvg } from '../../assets/img/list.svg';
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
@@ -252,6 +254,8 @@ const App = () => {
           :
         (
           <NotAuth />
+          // <Registration />
+          // <Login />
         )
       }
       </div>    
