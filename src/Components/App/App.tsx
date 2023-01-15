@@ -245,7 +245,7 @@ const App = () => {
                       mode={theme.palette.mode}
                     />
                   )}
-                />   
+                /> 
               </Routes>
               </div>
             </div>
@@ -253,9 +253,11 @@ const App = () => {
         )
           :
         (
-          <NotAuth />
-          // <Registration />
-          // <Login />
+          <Routes>
+            <Route path='/' element={<NotAuth />}/>
+            <Route path='/login' element={<Login />}/>
+            <Route path='/registration' element={<Registration />}/>
+          </Routes>
         )
       }
       </div>    

@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import './NotAuth.scss';
 import todoPng from './todo.png';
@@ -16,12 +16,12 @@ const NotAuth = () => {
         <img src={requirement} alt='Todo'></img>
       </div>
       <div className='buttons'>
-        <NavLink to='/login' className='link'>
+        <Link to='/login' className='link'>
           <button className='buttonAuth oneButton'>Войти</button>
-        </NavLink>
-        <NavLink to='/registration' className='link'>
+        </Link>
+        <Link to='/registration' className='link'>
           <button className='buttonAuth buttonAuth_grey oneButton'>Зарегестрироваться</button>
-        </NavLink>
+        </Link>
       </div>
     </div>
   )
