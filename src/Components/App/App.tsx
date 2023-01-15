@@ -145,7 +145,7 @@ const App = () => {
     setLists(newList);
   };
 
-  const isAuth = false;
+  const isAuth = true;
 
   return (
       <div>
@@ -253,6 +253,7 @@ const App = () => {
         )
           :
         (
+          // <NotAuth />
           <Routes>
             <Route path='/' element={<NotAuth />}/>
             <Route path='/login' element={<Login />}/>
@@ -267,7 +268,7 @@ const App = () => {
 // export default App;
 
 export default function ToggleColorMode() {
-  const [mode, setMode] = React.useState<'light' | 'dark'>('light');
+  const [mode, setMode] = useState<'light' | 'dark'>('light');
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
@@ -276,6 +277,15 @@ export default function ToggleColorMode() {
     }),
     [],
   );
+
+  useEffect(() => {
+    const test = localStorage.getItem('mode') as string;
+    setMode(JSON.parse(test))
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('mode', JSON.stringify(mode));
+  }, [mode]);
 
   const theme = React.useMemo(
     () =>
