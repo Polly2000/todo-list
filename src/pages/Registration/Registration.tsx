@@ -5,8 +5,6 @@ import axios from "axios";
 
 import './Registration.scss';
 
-// axios.defaults.withCredentials = true;
-
 const Registration = () => {
 
   const [userName, setUserName] = useState<string>('');
@@ -15,36 +13,33 @@ const Registration = () => {
 
   const handleName = (name: string) => {
     setUserName(name);
-    console.log(name);
   }
 
   const handleEmail = (email: string) => {
     setEmail(email);
-    console.log(email);
   }
 
   const handlePassword = (password: string) => {
     setPassword(password);
-    console.log(password);
   }
 
-  // const registerHandler = async () => {
-  //   try {
-  //     await axios
-  //             .post('http://localhost:5000/api/auth/registration', {
-  //               userName: userName,
-  //               email: email,
-  //               password: password
-  //             }, {
-  //               headers: {
-  //                 'Content-Type': 'application/json'
-  //               }
-  //             })
-  //             .then(response => console.log(response))
-  //   } catch(err) {
-  //     console.log(err);
-  //   }
-  // }
+  const registerHandler = async () => {
+    try {
+      await axios
+              .post('http://localhost:5000/registration', {
+                name: userName,
+                email: email,
+                password: password
+              }, {
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              })
+              .then(response => console.log(response))
+    } catch(err) {
+      console.log(err);
+    }
+  }
 
   return(
     <div className="containerRegistration">
@@ -79,11 +74,10 @@ const Registration = () => {
           fullWidth
           onChange={(e) => handlePassword(e.target.value)}
         />
-        {/* <TextField className='fieldRegistration' label="Повтори пароль" color='success' type="password" autoComplete="current-password" fullWidth /> */}
         <div className='flex'>
           <button 
             className='button' 
-            // onClick={registerHandler}
+            onClick={registerHandler}
           >
             Зарегестрироваться
           </button>
