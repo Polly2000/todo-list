@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { Typography, TextField, Paper } from "@mui/material";
+import { Link } from 'react-router-dom';
 
 import './Registration.scss';
 
@@ -7,7 +7,7 @@ const Registration = () => {
 
   return(
     <div className="containerRegistration">
-      <div className='test'>
+      <div className='center'>
         <h1 className='title'>TODO APP</h1>
         <p className='text'>Твой персональный помощник</p>
       </div>
@@ -29,9 +29,14 @@ const Registration = () => {
         />
         <TextField className='fieldRegistration' label="Введи пароль" color='success' type="password" autoComplete="current-password" fullWidth />
         <TextField className='fieldRegistration' label="Повтори пароль" color='success' type="password" autoComplete="current-password" fullWidth />
-        <button className='button'>
-          Зарегестрироваться
-        </button>
+        <div className='flex'>
+          <button className='button'>
+            Зарегестрироваться
+          </button>
+          <Link to='/login' className='link'>
+            У меня есть аккаунт
+          </Link>
+        </div>
       </Paper>
     </div>
   )

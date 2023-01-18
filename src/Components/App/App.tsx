@@ -145,7 +145,7 @@ const App = () => {
     setLists(newList);
   };
 
-  const isAuth = true;
+  const isAuth = false;
 
   return (
       <div>

@@ -35,6 +35,20 @@
   margin-bottom: 5%;
 }
 
-.test {
+.center {
   text-align: center;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  transition: .3s;
+}
+
+.link:hover {
+  color: #4dd599;
 }
