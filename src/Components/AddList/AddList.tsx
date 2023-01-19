@@ -16,6 +16,7 @@ interface IAddList {
 const AddList: FC<IAddList> = ({
     colors, onAdd, mode
   }) => {
+
   
     const [visiblePopup, setVisiblePopup] = useState(false);
     const [selectedColor, setSelectColor] = useState(3); 
@@ -24,14 +25,14 @@ const AddList: FC<IAddList> = ({
   
     useEffect(() => {
       if (Array.isArray(colors)) {
-        setSelectColor(colors[0].id);
+        setSelectColor(colors[0]._id);
       }
     }, [colors]);
   
     const onClose = () => {
       setVisiblePopup(false); // чтобы закрылось после добавления списка окно
       setInputValue(''); // обнулился ввод
-      setSelectColor(colors[0].id); // сделали чтобы 1 цвет был
+      setSelectColor(colors[0]._id); // сделали чтобы 1 цвет был
     }
   
     const addList = () => {
@@ -46,7 +47,7 @@ const AddList: FC<IAddList> = ({
           colorId: selectedColor
         })
         .then(({ data }) => {
-          const color = colors.filter((c:any) => c.id === selectedColor)[0]; // получаем название цвета
+          const color = colors.filter((c:any) => c._id === selectedColor)[0]; // получаем название цвета
           const listObj = { ...data, color: { name: color.name, hex: color.hex } };
           onAdd(listObj);
           onClose();
@@ -89,10 +90,10 @@ const AddList: FC<IAddList> = ({
           <div className='add-list__popup-colors'>
             {
               colors.map((color: any) => 
-              <Badge className={selectedColor === color.id && 'badge_active'}
+              <Badge className={selectedColor === color._id && 'badge_active'}
                 key={color.id}
                 color={color.name} 
-                onClick={() => setSelectColor(color.id)}
+                onClick={() => setSelectColor(color._id)}
               />)
             }
           </div>

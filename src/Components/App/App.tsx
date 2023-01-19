@@ -51,7 +51,8 @@ const App = () => {
         setLists(data);
       });
     axios
-      .get('http://localhost:3001/colors')
+      // .get('http://localhost:3001/colors')
+      .get('http://localhost:5000/colors')
       .then(({ data }) => {
       setColors(data);
     });
@@ -145,7 +146,11 @@ const App = () => {
     setLists(newList);
   };
 
-  const isAuth = false;
+  // lists && lists.map((list:any) => {
+  //   return console.log(list);
+  // })
+
+  const isAuth = true;
 
   return (
       <div>
@@ -218,7 +223,7 @@ const App = () => {
                   element={
                     lists && lists.map((list: any) => (
                       <Tasks 
-                        key={list}
+                        key={list.id}
                         list={list} 
                         onEditTitle={onEditListTitle}
                         onAddTask={onAddTask}
@@ -233,9 +238,10 @@ const App = () => {
                 
                 />
                 <Route 
-                  path='/lists/:id' 
+                  path='/lists/:id'
                   element={lists && activeItem && (
                     <Tasks 
+                      key={activeItem}
                       list={activeItem} 
                       onEditTitle={onEditListTitle}
                       onAddTask={onAddTask}
