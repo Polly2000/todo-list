@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Typography, TextField, Paper } from "@mui/material";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 import './Registration.scss';
@@ -10,6 +10,7 @@ const Registration = () => {
   const [userName, setUserName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const navigate = useNavigate();
 
   const handleName = (name: string) => {
     setUserName(name);
@@ -35,7 +36,11 @@ const Registration = () => {
                   'Content-Type': 'application/json'
                 }
               })
-              .then(response => console.log(response))
+              .then((res) => {
+                if (res.status === 200 || res.status === 201) {
+                  navigate('/login');
+                }
+              })
     } catch(err) {
       console.log(err);
     }

@@ -1,9 +1,49 @@
+import { useState, useContext } from "react";
 import { Typography, TextField, Paper } from "@mui/material";
 import { Link } from 'react-router-dom';
+import axios from "axios";
 
 import './Login.scss';
+import { AuthContext } from "../../context/AuthContext";
 
 const Login = () => {
+
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
+  const handleEmail = (email: string) => {
+    setEmail(email);
+  }
+
+  const handlePassword = (password: string) => {
+    setPassword(password);
+  }
+
+  const { login } = useContext(AuthContext);
+
+    const loginHandler = async () => {
+    try {
+      await axios
+              .post('http://localhost:5000/login', {
+                email: email,
+                password: password
+              }, {
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              })
+              .then((res) => {
+                if (res.status === 200 || res.status === 201) {
+                  // navigate('/login');
+                  login(res.data.token, res.data.userId);
+                }
+              })
+    } catch(err) {
+      console.log(err);
+    }
+  }
+
+
   return(
     <div className="containerLogin">
       <div className='center'>
@@ -19,10 +59,22 @@ const Login = () => {
           label="Введи email"
           color='success'
           fullWidth
+          onChange={(e) => handleEmail(e.target.value)}
         />
-        <TextField className='fieldLogin' label="Введи пароль" color='success' type="password" autoComplete="current-password" fullWidth />
+        <TextField 
+          className='fieldLogin' 
+          label="Введи пароль" 
+          color='success' 
+          type="password" 
+          autoComplete="current-password" 
+          fullWidth
+          onChange={(e) => handlePassword(e.target.value)}
+        />
         <div className='flex'>
-          <button className='button'>
+          <button 
+            className='button'
+            onClick={loginHandler}
+          >
             Войти
           </button>
           <Link to='/registration' className='link'>

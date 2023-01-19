@@ -8,6 +8,8 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 import './App.scss';
+import { AuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/auth.hook';
 import List from '../List/List';
 import Tasks from '../Tasks/Tasks';
 import AddList from '../AddList/AddList';
@@ -20,6 +22,8 @@ const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 const App = () => {
 
+  const { login, logout, token, userId, isReady } = useAuth();
+  const isLogin = !!token;
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
 
@@ -146,15 +150,12 @@ const App = () => {
     setLists(newList);
   };
 
-  // lists && lists.map((list:any) => {
-  //   return console.log(list);
-  // })
-
-  const isAuth = true;
+  const isAuth = false;
 
   return (
+    <AuthContext.Provider value={{login, logout, token, userId, isReady, isLogin}}>
       <div>
-        { isAuth ?
+        { isLogin ?
         (
           <Box
             sx={{
@@ -172,7 +173,8 @@ const App = () => {
                 <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
                   {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
                 </IconButton>
-                <p>login</p>
+                {/* <p>login</p> */}
+                <button onClick={logout}>logout</button>
               </div>
             </div>
 
@@ -268,6 +270,7 @@ const App = () => {
         )
       }
       </div>    
+    </AuthContext.Provider>
   );
 }
 
