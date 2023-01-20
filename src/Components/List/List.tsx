@@ -30,7 +30,7 @@ const List: FC<IList> =
     const removeList = (item: any) => {
         if (window.confirm('Вы действительно хотите удалить список?')) {
           axios
-            .delete('https://todo-json-server-0xkx.onrender.com/lists/' + item.id)
+            .delete('http://localhost:3001/lists/' + item.id)
             .then(() => {
               onRemove(item.id); // удаление списка из бекенда, но не из стейта
             })
