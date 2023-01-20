@@ -8,7 +8,7 @@
 - scss
 - material ui
 
-#### How to run the application locally on your computer:
+#### How to run the application locally on your computer (use `main` branch):
 
 For client run: `npm start`
 
