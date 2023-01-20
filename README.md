@@ -1,6 +1,6 @@
 # Todo-list with React
 
-Stack:
+#### Stack:
 - react
 - react-router-dom
 - hooks
