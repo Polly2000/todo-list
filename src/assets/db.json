@@ -1,0 +1,115 @@
+{
+  "lists": [
+    {
+      "id": 1,
+      "name": "Покупки",
+      "colorId": 5
+    },
+    {
+      "id": 2,
+      "name": "Фронтенд",
+      "colorId": 4
+    },
+    {
+      "id": 3,
+      "name": "Фильмы и сериалы",
+      "colorId": 3
+    },
+    {
+      "id": 4,
+      "name": "Книги",
+      "colorId": 2
+    },
+    {
+      "name": "название списка",
+      "colorId": 7,
+      "id": 5
+    }
+  ],
+  "tasks": [
+    {
+      "id": 2,
+      "listId": 2,
+      "text": "Изучить 'Грокаем алгоритмы'",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "listId": 2,
+      "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "listId": 2,
+      "text": "Redux (redux-observable, redux-saga)",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "listId": 2,
+      "text": "Изучить ReactJS",
+      "completed": true
+    },
+    {
+      "listId": 3,
+      "text": "Привет новой задаче",
+      "completed": false,
+      "id": 6
+    },
+    {
+      "listId": 1,
+      "text": "купи слона",
+      "completed": false,
+      "id": 7
+    },
+    {
+      "listId": 5,
+      "text": "шндглонрпаввап",
+      "completed": false,
+      "id": 8
+    }
+  ],
+  "colors": [
+    {
+      "id": 1,
+      "hex": "#C9D1D3",
+      "name": "grey"
+    },
+    {
+      "id": 2,
+      "hex": "#42B883",
+      "name": "green"
+    },
+    {
+      "id": 3,
+      "hex": "#64C4ED",
+      "name": "blue"
+    },
+    {
+      "id": 4,
+      "hex": "#FFBBCC",
+      "name": "pink"
+    },
+    {
+      "id": 5,
+      "hex": "#B6E6BD",
+      "name": "lime"
+    },
+    {
+      "id": 6,
+      "hex": "#FED6BC",
+      "name": "orange"
+    },
+    {
+      "id": 7,
+      "hex": "#a2befa",
+      "name": "lilac"
+    },
+    {
+      "id": 8,
+      "hex": "#FF6464",
+      "name": "red"
+    }
+  ]
+}

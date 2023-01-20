@@ -1,0 +1,147 @@
+* {
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  outline: none;
+  font-family: 'Roboto', system-ui, -apple-system;
+  font-size: 14px;
+  color: #4e4e4e;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  margin: 0 auto;
+  width: 1200px;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.todo {
+  display: flex;
+  border-radius: 10px;
+  border: 2px solid #f1f1f1;
+  min-height: 99.5vh;
+
+  &__sidebar {
+    background-color: #F4F6F8;
+    border-radius: 10px 0 0 10px;
+    width: 20%;
+    padding: 40px 20px 60px 20px;
+    min-height: 99.5vh;
+  }
+
+  &__tasks {
+    flex: 1;
+    padding: 40px;
+  }
+}
+
+.todoDark {
+  display: flex;
+  border-radius: 10px;
+  border: 2px solid #15181d;
+  min-height: 99.5vh;
+
+  &__sidebar {
+    background-color: #15181d;
+    border-radius: 10px 0 0 0;
+    width: 20%;
+    padding: 40px 20px 60px 20px;
+    min-height: 99.5vh;
+  }
+
+  &__tasks {
+    flex: 1;
+    padding: 40px;
+  }
+}
+
+.field {
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 100%;
+
+  &:focus {
+    border-color: #ebebeb;
+  }
+
+}
+
+.fieldDark {
+  background-color: #dfdfdf;
+  border: 1px solid #dbdbdb;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 8px 12px;
+  width: 100%;
+
+  &:focus {
+    border-color: #ebebeb;
+  }
+
+}
+
+.button {
+  background-color: #4dd599;
+  border-radius: 4px;
+  color: #fff;
+  border: 0;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  overflow: hidden;
+
+  &:hover {
+    background-color: darken(#4dd599, 5%);
+  }
+
+  &:active {
+    background-color: darken(#4dd599, 10%);
+  }
+
+  &:disabled {
+    background-color: #d8d8d8;
+  }
+
+  &_grey {
+    background-color: #F4F6F8;
+    color: #9C9C9C;
+
+    &:hover {
+      background-color: darken(#F4F6F8, 3%);
+    }
+
+    &:active {
+      background-color: darken(#F4F6F8, 6%);
+    }
+  }
+}
+
+.buttonDark_grey {
+    background-color: #dfdfdf;
+    color: #9C9C9C;
+
+    &:hover {
+      background-color: darken(#dfdfdf, 3%);
+    }
+
+    &:active {
+      background-color: darken(#dfdfdf, 6%);
+    }
+}

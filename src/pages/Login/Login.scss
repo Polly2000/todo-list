@@ -1,0 +1,54 @@
+.containerLogin {
+  width: 30%;
+  margin: 0 auto;
+  font-family: Montserrat;
+}
+
+.root {
+  padding: 50px;
+  border: 1px solid #dedede;
+  margin-top: 10%;
+}
+
+.fieldLogin {
+  margin-bottom: 20px !important;
+}
+
+.titleEnter {
+  text-align: center;
+  font-weight: 500;
+  color: #4e4e4e;
+  margin-bottom: 20px !important;
+}
+
+.title {
+  margin-top: 20%;
+  font-family: Montserrat;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 45px;
+  color: #4e4e4e;
+}
+
+.text {
+  font-family: Montserrat;
+  margin-bottom: 5%;
+}
+
+.center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link {
+  transition: .3s;
+}
+
+.link:hover {
+  color: #4dd599;
+}
