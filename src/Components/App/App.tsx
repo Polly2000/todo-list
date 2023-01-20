@@ -8,22 +8,15 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 import './App.scss';
-import { AuthContext } from '../../context/AuthContext';
-import { useAuth } from '../../hooks/auth.hook';
 import List from '../List/List';
 import Tasks from '../Tasks/Tasks';
 import AddList from '../AddList/AddList';
-import NotAuth from '../../pages/NotAuth/NotAuth';
-import Login from '../../pages/Login/Login';
-import Registration from '../../pages/Registration/Registration';
 import { ReactComponent as ListSvg } from '../../assets/img/list.svg';
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
 const App = () => {
 
-  const { login, logout, token, userId, isReady } = useAuth();
-  const isLogin = !!token;
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
 
@@ -74,6 +67,7 @@ const App = () => {
   const onAddTask = (listId: any, taskObj: any) => {
     const newList = lists.map((item:any) => {
       if (item.id === listId) {
+        console.log(taskObj)
         item.tasks = [...item.tasks, taskObj];
       }
       return item;
@@ -93,7 +87,7 @@ const App = () => {
     axios
       .delete('http://localhost:3001/tasks/' + taskId)
       .catch(() => {
-        alert('Не удалось удалить задачу :с')
+        alert('Не удалось удалить задачу')
       });
     }
   };
@@ -114,7 +108,7 @@ const App = () => {
   axios
     .patch('http://localhost:3001/tasks/' + taskId, { completed })
     .catch(() => {
-      alert('Не удалось обновить задачу :с')
+      alert('Не удалось обновить задачу')
     });
   }
   
@@ -140,7 +134,7 @@ const App = () => {
     axios
       .patch('http://localhost:3001/tasks/' + taskObj.id, { text: taskObj.text })
       .catch(() => {
-        alert('Не удалось изменить название задачи :с')
+        alert('Не удалось изменить название задачи')
       });
   };
 
@@ -149,13 +143,9 @@ const App = () => {
     setLists(newList);
   };
 
-  const isAuth = false;
 
   return (
-    <AuthContext.Provider value={{login, logout, token, userId, isReady, isLogin}}>
       <div>
-        { isLogin ?
-        (
           <Box
             sx={{
               display: 'flex',
@@ -172,8 +162,6 @@ const App = () => {
                 <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
                   {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
                 </IconButton>
-                {/* <p>login</p> */}
-                <button onClick={logout}>logout</button>
               </div>
             </div>
 
@@ -257,23 +245,9 @@ const App = () => {
               </div>
             </div>
           </Box> 
-        )
-          :
-        (
-          // <NotAuth />
-          <Routes>
-            <Route path='/' element={<NotAuth />}/>
-            <Route path='/login' element={<Login />}/>
-            <Route path='/registration' element={<Registration />}/>
-          </Routes>
-        )
-      }
       </div>    
-    </AuthContext.Provider>
   );
 }
-
-// export default App;
 
 export default function ToggleColorMode() {
   const [mode, setMode] = useState<'light' | 'dark'>('light');

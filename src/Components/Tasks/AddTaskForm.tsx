@@ -44,7 +44,7 @@ const AddTaskForm: FC<IAddTaskForm> =
         onAddTask(list.id, data)
         toggleFormVisible();
       })
-      .catch((e:any) => alert('Ошибка при добавлении задачи :с'))
+      .catch((e:any) => alert('Ошибка при добавлении задачи'))
       .finally(() => {
         setIsLoading(false);
       })

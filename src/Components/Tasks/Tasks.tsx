@@ -38,7 +38,7 @@ const Tasks: FC<ITasks> =
           name: newTitle
         })
       .catch(() => {
-        alert('Не удалось обновить название списка :с')
+        alert('Не удалось обновить название списка')
       });
     }
   }
@@ -55,7 +55,8 @@ const Tasks: FC<ITasks> =
       </h2>
 
       <div className="tasks__items">
-        {!withoutEmpty && list.tasks && !list.tasks.length && (   <h2>Задачи отсутствуют</h2>
+        {!withoutEmpty && list.tasks && !list.tasks.length && (   
+          <h2>Задачи отсутствуют</h2>
         )}
         {list.tasks && list.tasks.map((task:any) => (
             <Task 

@@ -1,73 +1,44 @@
 {
   "lists": [
     {
-      "id": 1,
-      "name": "Покупки",
-      "colorId": 5
+      "name": "Домашние дела",
+      "colorId": 3,
+      "id": 1
     },
     {
-      "id": 2,
-      "name": "Фронтенд",
-      "colorId": 4
+      "name": "Учеба",
+      "colorId": 5,
+      "id": 2
     },
     {
-      "id": 3,
-      "name": "Фильмы и сериалы",
-      "colorId": 3
+      "name": "Работа",
+      "colorId": 4,
+      "id": 3
     },
     {
-      "id": 4,
-      "name": "Книги",
-      "colorId": 2
-    },
-    {
-      "name": "название списка",
-      "colorId": 7,
-      "id": 5
+      "name": "Отдых",
+      "colorId": 6,
+      "id": 4
     }
   ],
   "tasks": [
     {
-      "id": 2,
-      "listId": 2,
-      "text": "Изучить 'Грокаем алгоритмы'",
-      "completed": true
-    },
-    {
-      "id": 3,
-      "listId": 2,
-      "text": "ReactJS Hooks (useState, useReducer, useEffect и т.д.)",
-      "completed": false
-    },
-    {
-      "id": 4,
-      "listId": 2,
-      "text": "Redux (redux-observable, redux-saga)",
-      "completed": false
-    },
-    {
-      "id": 5,
-      "listId": 2,
-      "text": "Изучить ReactJS",
-      "completed": true
-    },
-    {
-      "listId": 3,
-      "text": "Привет новой задаче",
-      "completed": false,
-      "id": 6
-    },
-    {
       "listId": 1,
-      "text": "купи слона",
-      "completed": false,
-      "id": 7
+      "text": "Приготовить ужин",
+      "completed": true,
+      "id": 1
     },
     {
-      "listId": 5,
-      "text": "шндглонрпаввап",
+      "listId": 2,
+      "text": "Написать курсовую",
       "completed": false,
-      "id": 8
+      "id": 2
+    },
+    {
+      "listId": 4,
+      "text": "Отправиться на каток",
+      "completed": false,
+      "id": 3
     }
   ],
   "colors": [

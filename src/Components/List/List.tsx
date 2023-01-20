@@ -52,7 +52,6 @@ const List: FC<IList> =
                       <Badge color={item.color.name} />
                     )}
                   </i>
-                  {/* <span> {item.name} {item.tasks && `(${item.tasks.length})`} </span> */} 
                   <span> {item.name} </span>
                   {isRemovable && (
                     <img 

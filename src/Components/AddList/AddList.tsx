@@ -25,14 +25,14 @@ const AddList: FC<IAddList> = ({
   
     useEffect(() => {
       if (Array.isArray(colors)) {
-        setSelectColor(colors[0]._id);
+        setSelectColor(colors[0].id);
       }
     }, [colors]);
   
     const onClose = () => {
-      setVisiblePopup(false); // чтобы закрылось после добавления списка окно
-      setInputValue(''); // обнулился ввод
-      setSelectColor(colors[0]._id); // сделали чтобы 1 цвет был
+      setVisiblePopup(false);
+      setInputValue('');
+      setSelectColor(colors[0].id);
     }
   
     const addList = () => {
@@ -40,21 +40,21 @@ const AddList: FC<IAddList> = ({
         alert('Пожалуйста, введите название папки')
         return; // обрывает функцию, тк пользователь ничего не ввел
       }
-      setIsLoading(true); // говорим, что идет загрузка
+      setIsLoading(true);
       axios
         .post('http://localhost:3001/lists', {
           name: inputValue,
           colorId: selectedColor
         })
         .then(({ data }) => {
-          const color = colors.filter((c:any) => c._id === selectedColor)[0]; // получаем название цвета
-          const listObj = { ...data, color: { name: color.name, hex: color.hex } };
+          const color = colors.filter((c:any) => c.id === selectedColor)[0]; 
+          const listObj = { ...data, color: { name: color.name, hex: color.hex }, tasks: [] };
           onAdd(listObj);
           onClose();
         })
-        .catch(() => alert('Ошибка при добавлении списка :с'))
+        .catch((err) => alert('Ошибка при добавлении списка'))
         .finally(() => {
-          setIsLoading(false); // после успешного запроса говорим что загрузка равна фолз, то есть, все
+          setIsLoading(false);
         })
     }
   
@@ -71,7 +71,6 @@ const AddList: FC<IAddList> = ({
           ]}
           isRemovable={false}
         />
-        {/* если визиблПопап тру - то появится окошко */}
         { visiblePopup && (
           <div className={mode === 'dark' ? 'add-listDark__popup' : 'add-list__popup'}>
             <img
@@ -90,10 +89,10 @@ const AddList: FC<IAddList> = ({
           <div className='add-list__popup-colors'>
             {
               colors.map((color: any) => 
-              <Badge className={selectedColor === color._id && 'badge_active'}
+              <Badge className={selectedColor === color.id && 'badge_active'}
                 key={color.id}
                 color={color.name} 
-                onClick={() => setSelectColor(color._id)}
+                onClick={() => setSelectColor(color.id)}
               />)
             }
           </div>
