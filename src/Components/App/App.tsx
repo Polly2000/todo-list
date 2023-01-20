@@ -27,9 +27,9 @@ const App = () => {
   const location = useLocation();
 
   const navigate = useNavigate()
-  const goHome = () => navigate('/');
+  const goHome = () => navigate('/todo-list');
   const goList = (id: number) => {
-    navigate(`/lists/${id}`);
+    navigate(`/todo-list/lists/${id}`);
   }
 
   useEffect(() => {
@@ -208,7 +208,7 @@ const App = () => {
               <div className='todo__tasks'>
               <Routes>
                 <Route 
-                  path='/'
+                  path='/todo-list'
                   element={
                     lists && lists.map((list: any) => (
                       <Tasks 
@@ -227,7 +227,7 @@ const App = () => {
                 
                 />
                 <Route 
-                  path='/lists/:id'
+                  path='/todo-list/lists/:id'
                   element={lists && activeItem && (
                     <Tasks 
                       key={activeItem}
