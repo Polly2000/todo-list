@@ -55,8 +55,7 @@ const App = () => {
         setLists(data);
       });
     axios
-      // .get('http://localhost:3001/colors')
-      .get('http://localhost:5000/colors')
+      .get('http://localhost:3001/colors')
       .then(({ data }) => {
       setColors(data);
     });
