@@ -1,6 +1,6 @@
 # Todo-list with React
 
-#### Stack:
+### Stack:
 - react
 - react-router-dom
 - hooks
@@ -8,7 +8,7 @@
 - scss
 - material ui
 
-#### How to run the application locally on your computer (use `main` branch):
+### How to run the application locally on your computer (use `main` branch):
 
 For client run: `npm start`
 
