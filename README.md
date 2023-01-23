@@ -1,4 +1,5 @@
 # Todo-list with React
+![alt text](todoscreen.png)
 
 ### Stack:
 - react
