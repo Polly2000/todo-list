@@ -1,8 +1,7 @@
 # Todo-list with React
 ![alt text](todoscreen.png)
-
-### Design:
-https://t.me/archakovblog
+Design by Archakov Blog 
+https://www.figma.com/file/OP7oFTNqV8tPZyh2zSgCaX/Todo-ReactJS
 
 ### Stack:
 - react
