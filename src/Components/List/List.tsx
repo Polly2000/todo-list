@@ -28,7 +28,7 @@ const List: FC<IList> =
 }) => {
 
     const removeList = (item: any) => {
-        if (window.confirm('Вы действительно хотите удалить список?')) {
+        if (window.confirm('Are you sure you want to delete the folder?')) {
           axios
             .delete('http://localhost:3001/lists/' + item.id)
             .then(() => {

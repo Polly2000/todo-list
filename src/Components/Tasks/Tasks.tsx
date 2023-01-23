@@ -7,14 +7,14 @@ import AddTaskForm from './AddTaskForm';
 import Task from './Task';
 
 interface ITasks {
-    list: any,
-    onEditTitle: any,
-    onAddTask: any,
-    onRemoveTask?: any,
-    onEditTask?: any,
-    withoutEmpty?: any,
-    onCompleteTask?: any,
-    mode?: any,
+  list: any,
+  onEditTitle: any,
+  onAddTask: any,
+  onRemoveTask?: any,
+  onEditTask?: any,
+  withoutEmpty?: any,
+  onCompleteTask?: any,
+  mode?: any,
 }
 
 const Tasks: FC<ITasks> = 
@@ -30,7 +30,7 @@ const Tasks: FC<ITasks> =
 }) => {
 
   const editTitle = () => {
-    const newTitle = window.prompt('Название списка', list.name);
+    const newTitle = window.prompt('Folder name', list.name);
     if (newTitle) {
       onEditTitle(list.id, newTitle);
       axios
@@ -38,7 +38,7 @@ const Tasks: FC<ITasks> =
           name: newTitle
         })
       .catch(() => {
-        alert('Не удалось обновить название списка')
+        alert('Failed to update folder name')
       });
     }
   }
@@ -56,7 +56,7 @@ const Tasks: FC<ITasks> =
 
       <div className="tasks__items">
         {!withoutEmpty && list.tasks && !list.tasks.length && (   
-          <h2>Задачи отсутствуют</h2>
+          <h2>No tasks</h2>
         )}
         {list.tasks && list.tasks.map((task:any) => (
             <Task 

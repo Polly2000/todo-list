@@ -76,7 +76,7 @@ const App = () => {
   };
 
   const onRemoveTask = (listId: number, taskId: number) => {
-    if (window.confirm('Вы действительно хотите удалить задачу?')) {
+    if (window.confirm('Are you sure you want to delete the task?')) {
       const newList = lists.map((item:any) => {
         if (item.id === listId) {
           item.tasks = item.tasks.filter((task:any) => task.id !== taskId)
@@ -87,7 +87,7 @@ const App = () => {
     axios
       .delete('http://localhost:3001/tasks/' + taskId)
       .catch(() => {
-        alert('Не удалось удалить задачу')
+        alert('Failed to delete task')
       });
     }
   };
@@ -108,12 +108,12 @@ const App = () => {
   axios
     .patch('http://localhost:3001/tasks/' + taskId, { completed })
     .catch(() => {
-      alert('Не удалось обновить задачу')
+      alert('Failed to update task')
     });
   }
   
   const onEditTask = (listId: any, taskObj: any) => {
-    const newTaskText = window.prompt('Введите текст задачи..', taskObj.text);
+    const newTaskText = window.prompt('Enter task text..', taskObj.text);
 
     if (!newTaskText) { 
       return;
@@ -134,7 +134,7 @@ const App = () => {
     axios
       .patch('http://localhost:3001/tasks/' + taskObj.id, { text: taskObj.text })
       .catch(() => {
-        alert('Не удалось изменить название задачи')
+        alert('Failed to change task name')
       });
   };
 
@@ -175,7 +175,7 @@ const App = () => {
                     {
                       active: !activeItem,
                       icon: <ListSvg />,
-                      name: 'Все задачи',
+                      name: 'All tasks',
                     },
                   ]}
                   isRemovable={false}
@@ -196,7 +196,7 @@ const App = () => {
                     mode={theme.palette.mode}
                   />
                 ) : (
-                  'Загрузка...'
+                  'Loading...'
                 )}
                   
                 <AddList 

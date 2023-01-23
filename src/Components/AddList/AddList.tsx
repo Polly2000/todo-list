@@ -37,7 +37,7 @@ const AddList: FC<IAddList> = ({
   
     const addList = () => {
       if (!inputValue) {
-        alert('Пожалуйста, введите название папки')
+        alert('Enter folder name')
         return; // обрывает функцию, тк пользователь ничего не ввел
       }
       setIsLoading(true);
@@ -52,7 +52,7 @@ const AddList: FC<IAddList> = ({
           onAdd(listObj);
           onClose();
         })
-        .catch((err) => alert('Ошибка при добавлении списка'))
+        .catch((err) => alert('Error adding folder'))
         .finally(() => {
           setIsLoading(false);
         })
@@ -66,7 +66,7 @@ const AddList: FC<IAddList> = ({
             {
               className: 'add-list__button',
               icon: <PlusSvg />,
-              name: 'Добавить папку',
+              name: 'Add folder',
             }
           ]}
           isRemovable={false}
@@ -84,7 +84,7 @@ const AddList: FC<IAddList> = ({
             onChange={(e:any) => setInputValue(e.target.value)}
             className={mode === 'dark' ? 'fieldDark' : 'field'}
             type='text'
-            placeholder='Название папки'
+            placeholder='Folder name'
           />
           <div className='add-list__popup-colors'>
             {
@@ -100,7 +100,7 @@ const AddList: FC<IAddList> = ({
             className='button'
             onClick={addList}
           > 
-            {isLoading ? 'Добавление...' : 'Добавить'}
+            {isLoading ? 'Adding...' : 'Add'}
           </button>
         </div>)}
       </div>

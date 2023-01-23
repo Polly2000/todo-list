@@ -29,7 +29,7 @@ const AddTaskForm: FC<IAddTaskForm> =
 
   const addTask = () => {
     if (!inputValue) { 
-      alert('Пожалуйста, введите название таска')
+      alert('Enter the name of the task')
       return;
     }
     const obj = {
@@ -44,7 +44,7 @@ const AddTaskForm: FC<IAddTaskForm> =
         onAddTask(list.id, data)
         toggleFormVisible();
       })
-      .catch((e:any) => alert('Ошибка при добавлении задачи'))
+      .catch((e:any) => alert('Error adding task'))
       .finally(() => {
         setIsLoading(false);
       })
@@ -58,14 +58,14 @@ const AddTaskForm: FC<IAddTaskForm> =
           onClick={toggleFormVisible}
         >
           <img src={addSvg} alt='Add icon' />
-          <span> Новая задача </span>
+          <span> New task </span>
         </div>
         ):(
         <div className={mode === 'dark' ? 'tasksDark__form-block' : "tasks__form-block"}>
           <input
             className={mode === 'dark' ? 'fieldDark' : 'field'}
             type='text'
-            placeholder='Введите текст задачи..'
+            placeholder='Enter task text..'
             onChange={event => setInputValue(event.target.value)}
           />
           <button 
@@ -73,13 +73,13 @@ const AddTaskForm: FC<IAddTaskForm> =
             className='button'
             onClick={addTask}
           >
-            {isLoading ? 'Добавление...' : 'Добавить задачу'}
+            {isLoading ? 'Adding...' : 'Add'}
           </button>
           <button 
             className={mode === 'dark' ? 'button buttonDark_grey' : 'button button_grey'}
             onClick={toggleFormVisible}
           >
-            Отмена
+            Cancel
           </button>
         </div>
         )
