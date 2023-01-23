@@ -1,6 +1,9 @@
 # Todo-list with React
 ![alt text](todoscreen.png)
 
+### Design:
+https://t.me/archakovblog
+
 ### Stack:
 - react
 - react-router-dom
