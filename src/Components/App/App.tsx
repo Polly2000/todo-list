@@ -43,12 +43,12 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3001/lists?_expand=color&_embed=tasks')
+      .get('https://todo-json-server-0xkx.onrender.com/lists?_expand=color&_embed=tasks')
       .then(({ data }) => {
         setLists(data);
       });
     axios
-      .get('http://localhost:3001/colors')
+      .get('https://todo-json-server-0xkx.onrender.com/colors')
       .then(({ data }) => {
       setColors(data);
     });
@@ -85,7 +85,7 @@ const App = () => {
     });
     setLists(newList);
     axios
-      .delete('http://localhost:3001/tasks/' + taskId)
+      .delete('https://todo-json-server-0xkx.onrender.com/tasks/' + taskId)
       .catch(() => {
         alert('Failed to delete task')
       });
@@ -106,7 +106,7 @@ const App = () => {
   });
   setLists(newList);
   axios
-    .patch('http://localhost:3001/tasks/' + taskId, { completed })
+    .patch('https://todo-json-server-0xkx.onrender.com/tasks/' + taskId, { completed })
     .catch(() => {
       alert('Failed to update task')
     });
@@ -132,7 +132,7 @@ const App = () => {
     });
     setLists(newList);
     axios
-      .patch('http://localhost:3001/tasks/' + taskObj.id, { text: taskObj.text })
+      .patch('https://todo-json-server-0xkx.onrender.com/tasks/' + taskObj.id, { text: taskObj.text })
       .catch(() => {
         alert('Failed to change task name')
       });

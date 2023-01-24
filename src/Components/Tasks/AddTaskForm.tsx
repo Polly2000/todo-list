@@ -39,7 +39,7 @@ const AddTaskForm: FC<IAddTaskForm> =
     };
     setIsLoading(true);
     axios
-      .post('http://localhost:3001/tasks', obj)
+      .post('https://todo-json-server-0xkx.onrender.com/tasks', obj)
       .then(({ data }) => {
         onAddTask(list.id, data)
         toggleFormVisible();

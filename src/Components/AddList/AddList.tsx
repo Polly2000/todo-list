@@ -42,7 +42,7 @@ const AddList: FC<IAddList> = ({
       }
       setIsLoading(true);
       axios
-        .post('http://localhost:3001/lists', {
+        .post('https://todo-json-server-0xkx.onrender.com/lists', {
           name: inputValue,
           colorId: selectedColor
         })

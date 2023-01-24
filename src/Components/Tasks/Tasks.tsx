@@ -34,7 +34,7 @@ const Tasks: FC<ITasks> =
     if (newTitle) {
       onEditTitle(list.id, newTitle);
       axios
-      .patch('http://localhost:3001/lists/' + list.id, {
+      .patch('https://todo-json-server-0xkx.onrender.com/lists/' + list.id, {
           name: newTitle
         })
       .catch(() => {
