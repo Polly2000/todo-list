@@ -1,4 +1,5 @@
 import React, { FC} from 'react';
+import { useTheme } from '@mui/material/styles';
 import axios from 'axios';
 
 import './Tasks.scss';
@@ -14,7 +15,6 @@ interface ITasks {
   onEditTask?: any,
   withoutEmpty?: any,
   onCompleteTask?: any,
-  mode?: any,
 }
 
 const Tasks: FC<ITasks> = 
@@ -26,9 +26,9 @@ const Tasks: FC<ITasks> =
   onEditTask,
   withoutEmpty,
   onCompleteTask,
-  mode
 }) => {
 
+  const theme = useTheme();
   const editTitle = () => {
     const newTitle = window.prompt('Folder name', list.name);
     if (newTitle) {
@@ -45,7 +45,7 @@ const Tasks: FC<ITasks> =
 
   return (
     <div className='tasks'>
-      <h2 style={{color: list.color.hex}} className={mode === 'dark' ? 'tasksDark__title' : 'tasks__title'}>
+      <h2 style={{color: list.color.hex}} className={theme.palette.mode === 'dark' ? 'tasksDark__title' : 'tasks__title'}>
         { list.name }
         <img 
           onClick={editTitle} 
@@ -73,7 +73,6 @@ const Tasks: FC<ITasks> =
           key={list.id}
           list={list}
           onAddTask={onAddTask}
-          mode={mode}
         />
       </div>
 

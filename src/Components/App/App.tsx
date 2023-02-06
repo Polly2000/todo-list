@@ -179,7 +179,6 @@ const App = () => {
                     },
                   ]}
                   isRemovable={false}
-                  mode={theme.palette.mode}
                 />
                 {lists ? (
                   <List 
@@ -193,7 +192,6 @@ const App = () => {
                     }}
                     activeItem={activeItem}
                     isRemovable
-                    mode={theme.palette.mode}
                   />
                 ) : (
                   'Loading...'
@@ -202,7 +200,6 @@ const App = () => {
                 <AddList 
                   onAdd={onAddList} 
                   colors={colors}
-                  mode={theme.palette.mode}
                 />
               </div>
               <div className='todo__tasks'>
@@ -220,7 +217,6 @@ const App = () => {
                         onEditTask={onEditTask}
                         onCompleteTask={onCompleteTask}
                         withoutEmpty
-                        mode={theme.palette.mode}
                       />
                     ))
                   }
@@ -237,7 +233,6 @@ const App = () => {
                       onRemoveTask={onRemoveTask}
                       onEditTask={onEditTask}
                       onCompleteTask={onCompleteTask}
-                      mode={theme.palette.mode}
                     />
                   )}
                 /> 

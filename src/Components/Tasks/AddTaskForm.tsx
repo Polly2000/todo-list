@@ -1,4 +1,5 @@
-import React, { useState, FC } from 'react'
+import React, { useState, FC } from 'react';
+import { useTheme } from '@mui/material/styles';
 import axios from 'axios';
 
 import './Tasks.scss';
@@ -7,16 +8,15 @@ import addSvg from '../../assets/img/add.svg';
 interface IAddTaskForm {
   list: any,
   onAddTask?: any,
-  mode: any,
 }
 
 const AddTaskForm: FC<IAddTaskForm> = 
 ({ 
   list,
   onAddTask,
-  mode
  }) => {
 
+  const theme = useTheme();
   const [visibleForm, setVisibleForm] = useState(false);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -61,9 +61,9 @@ const AddTaskForm: FC<IAddTaskForm> =
           <span> New task </span>
         </div>
         ):(
-        <div className={mode === 'dark' ? 'tasksDark__form-block' : "tasks__form-block"}>
+        <div className={theme.palette.mode === 'dark' ? 'tasksDark__form-block' : "tasks__form-block"}>
           <input
-            className={mode === 'dark' ? 'fieldDark' : 'field'}
+            className={theme.palette.mode === 'dark' ? 'fieldDark' : 'field'}
             type='text'
             placeholder='Enter task text..'
             onChange={event => setInputValue(event.target.value)}
@@ -76,7 +76,7 @@ const AddTaskForm: FC<IAddTaskForm> =
             {isLoading ? 'Adding...' : 'Add'}
           </button>
           <button 
-            className={mode === 'dark' ? 'button buttonDark_grey' : 'button button_grey'}
+            className={theme.palette.mode === 'dark' ? 'button buttonDark_grey' : 'button button_grey'}
             onClick={toggleFormVisible}
           >
             Cancel
